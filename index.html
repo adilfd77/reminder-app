@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Smart Reminder</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Smart Reminder</h1>
+
+<button id="darkBtn">🌙</button>
+
+</header>
+
+<div class="container">
+
+<div class="form">
+
+<input id="title" placeholder="Reminder title">
+
+<input type="date" id="date">
+
+<input type="time" id="time">
+
+<select id="category">
+<option>Study</option>
+<option>Work</option>
+<option>Health</option>
+<option>Personal</option>
+</select>
+
+<select id="priority">
+<option>Normal</option>
+<option>Important</option>
+<option>Urgent</option>
+</select>
+
+<button onclick="addReminder()">Add Reminder</button>
+
+</div>
+
+<input id="search" placeholder="Search reminder">
+
+<ul id="reminderList"></ul>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
