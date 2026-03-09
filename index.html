@@ -8,6 +8,12 @@
 <title>Smart Reminder</title>
 
 <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<script>
+if ('serviceWorker' in navigator) {
+ navigator.serviceWorker.register('service-worker.js');
+}
+</script>
 
 </head>
 
@@ -56,5 +62,6 @@
 
 <script src="app.js"></script>
 
+<button id="installBtn" style="display:none;">Install App</button>
 </body>
 </html>

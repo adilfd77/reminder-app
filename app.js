@@ -108,3 +108,40 @@ document.getElementById("darkBtn").onclick=()=>{
 document.body.classList.toggle("dark")
 
 }
+
+let deferredPrompt;
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = "block";
+});
+
+installBtn.addEventListener("click", async () => {
+  installBtn.style.display = "none";
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  console.log("User choice:", outcome);
+  deferredPrompt = null;
+});
+
+if ("Notification" in window) {
+  Notification.requestPermission().then(permission => {
+    if (permission === "granted") {
+      console.log("Notifications allowed");
+    }
+  });
+}
+function showNotification(text) {
+  if (Notification.permission === "granted") {
+    new Notification("Reminder", {
+      body: text,
+      icon: "icon.png"
+    });
+  }
+}
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("Service Worker Registered"));
+}
